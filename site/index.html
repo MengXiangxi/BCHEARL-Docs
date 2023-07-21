@@ -48,6 +48,12 @@
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#about-the-project">About the project</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#references">References</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#license">License</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#contact">Contact</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#history">History</a>
     </li>
     </ul>
@@ -86,7 +92,35 @@
 <p>A tool to obtain recovery coefficients from phantoms for PET/CT image harmonization applications.</p>
 </blockquote>
 <h2 id="about-the-project">About the project<a class="headerlink" href="#about-the-project" title="Permanent link"> ¶</a></h2>
+<p>Harmonization of PET quantification performance is not only important in multicenter clinical trials, but also affects the accuracy in clinical diagnosis. Currently, many influential protocols for PET harmonization involve imaging the NEMA/IEC IQ phantom and obtaining the recovery coefficient (RC) curves, including the <a href="https://earl.eanm.org/">EARL</a> protocol.</p>
+<p>However, there are only a handful of tools to obtain the RCs from the PET images of the phantoms. The community still needs yet another tool to build their pipelines.</p>
+<p>In light of this, I developed a personal pipeline, emulating the EARL protocol, to perform harmonization evaluations. I have already applied this protocol in multiple healthcare providers in Beijing.</p>
+<p>I hope you enjoy the project and the tool.</p>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link"> ¶</a></h2>
+<ul>
+<li>Boellaard, Ronald, et al. <a href="https://link.springer.com/article/10.1007/s00259-009-1297-4">&ldquo;FDG PET and PET/CT: EANM procedure guidelines for tumour PET imaging: version 1.0.&rdquo;</a> European Journal of Nuclear Medicine and Molecular Imaging 37 (2010): 181-200.<blockquote>
+<p>EANM guidelines 1.0, which proposed the original version of the EARL protocol, EARL1.</p>
+</blockquote>
+</li>
+<li>Kaalep, Andres, et al. <a href="https://link.springer.com/article/10.1007/s00259-018-3977-4">&ldquo;Feasibility of state of the art PET/CT systems performance harmonisation.&rdquo;</a> European Journal of Nuclear Medicine and Molecular Imaging 45 (2018): 1344-1361.<blockquote>
+<p>Proposed the range for EARL2.</p>
+</blockquote>
+</li>
+<li>Siemens <a href="https://www.siemens-healthineers.com/perspectives/mso-harmonizing-suv-with-eqpet.html">EQ•PET</a>, with <a href="https://www.siemens-healthineers.com/en-us/molecular-imaging/eq-pet-thank-you">white paper</a>.<blockquote>
+<p>Siemens released a product to perform harmonizations over different scanners. The principles are similar, but the purpose of <em>BCH EARL</em> is not the same.</p>
+</blockquote>
+</li>
+<li>Tsutsui, Yuji, et al. <a href="https://ejnmmires.springeropen.com/articles/10.1186/s13550-018-0438-9">&ldquo;Multicentre analysis of PET SUV using vendor-neutral software: the Japanese Harmonization Technology (J-Hart) study.&rdquo;</a> EJNMMI Research 8 (2018): 83.<blockquote>
+<p>Another similar protocol practiced in Japan.</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="license">License<a class="headerlink" href="#license" title="Permanent link"> ¶</a></h2>
+<p>For now, I am reserving all rights. But I do have a plan to release it as an open source software. However, I also retains the rights of commercialization.</p>
+<h2 id="contact">Contact<a class="headerlink" href="#contact" title="Permanent link"> ¶</a></h2>
+<p>See my <a href="https://mengxiangxi.info/">homepage</a>. I am very happy to discuss with you about it.</p>
 <h2 id="history">History<a class="headerlink" href="#history" title="Permanent link"> ¶</a></h2>
+<p>Release history of the <em>BCH EARL</em> tool.</p>
 <table>
 <thead>
 <tr>
@@ -103,7 +137,7 @@
 </tr>
 <tr>
 <td>0.5.0</td>
-<td>20030721</td>
+<td>20230721</td>
 <td>Final evaluation version</td>
 </tr>
 </tbody>
@@ -160,5 +194,5 @@
 
 <!--
 MkDocs version : 1.4.3
-Build Date UTC : 2023-07-21 15:39:10.716526+00:00
+Build Date UTC : 2023-07-21 16:37:49.164481+00:00
 -->
