@@ -1,16 +1,20 @@
-site_name: "cal-itp/mkdocs-template"
-site_url: https://docs.calitp.org/mkdocs-template
-repo_url: https://github.com/cal-itp/mkdocs-template
+site_name: "BCH EARL Documents"
+site_url: https://mengxiangxi.info/BCHEARL-Docs
+repo_url: https://github.com/MengXiangxi/BCHEARL-Docs/
 edit_uri: edit/main/docs
 
 theme:
-  name: material
+  name: readthedocs
+  highlightjs: true
+  hljs_languages:
+      - yaml
+      - rust
   features:
     - navigation.tabs
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: blue
+      primary: blue 
       accent: amber
       toggle:
         icon: material/toggle-switch-off-outline
