@@ -2,6 +2,8 @@
 
 > A tool on the Windows system to obtain recovery coefficients from phantoms for PET/CT image harmonization applications.
 
+Developed by Xiangxi Meng, PhD, **B**eijing **C**ancer **H**ospital
+
 ## About the project
 
 Harmonization of PET quantification performance is not only important in multicenter clinical trials, but also affects the accuracy in clinical diagnosis. Currently, many influential protocols for PET harmonization involve imaging the NEMA/IEC IQ phantom and obtaining the recovery coefficient (RC) curves, including the [EARL](https://earl.eanm.org/) protocol.
@@ -27,6 +29,10 @@ I hope you enjoy the project and the tool.
 
 For now, I am reserving all rights. But I do have a plan to release it as an open source software. However, I also retains the rights of commercialization.
 
+## Cite
+
+Please [contact](#contact) me before my paper gets published. Thank you in advance.
+
 ## Contact
 
 See my [homepage](https://mengxiangxi.info/). I am very happy to discuss with you about it.
@@ -39,3 +45,16 @@ Release history of the *BCH EARL* tool.
 | --- | --- | --- |
 | 0.1 | 20220709 | First Release |
 | 0.5.0 | 20230721 | Final evaluation version |
+
+## Acknowledgement
+
+Thank you for reviewing the code and/or testing the functions.
+
+- Jingjing Li, United Imaging Healthcare, Shanghai
+- Yifan Wu, United Imaging Healthcare, Shanghai
+- Debin Hu, Nanfang Hospital, Southern Medical University, Guangzhou
+
+This project is support by the following agencies
+
+- National Key R&D Program of China (2022YFC2409405), Ministry of Science and Technology of the People's Republic of China 
+- Beijing Center for Nuclear Medicine Quality Control and Improvement, Beijing Cancer Hospital

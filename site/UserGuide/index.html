@@ -56,7 +56,7 @@
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#specify-the-working-directory">Specify the working directory</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#fill-in-the-phantom-filling-parameters">Fill in the phantom filling parameters</a>
+    <li class="toctree-l3"><a class="reference internal" href="#specify-the-phantom-filling-parameters">Specify the phantom filling parameters</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#import-the-dicom-series">Import the DICOM series</a>
     </li>
@@ -71,6 +71,16 @@
     <li class="toctree-l2"><a class="reference internal" href="#gaussian-filtering">Gaussian filtering</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#calculating-with-task-file">Calculating with task file</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#other-functions">Other functions</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#refresh">Refresh</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#about">About</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#help">Help</a>
+    </li>
+        </ul>
     </li>
     </ul>
                 </li>
@@ -113,14 +123,34 @@
 <h2 id="calculating-with-gui">Calculating with GUI<a class="headerlink" href="#calculating-with-gui" title="Permanent link"> ¶</a></h2>
 <p>Upon successful installation, you can see run the application.</p>
 <p><img alt="GUI on start" src="../img/gui1.png" /></p>
+<p>The <strong>Menu</strong> is on the top. Below it are two panels. The <strong>Left Panel</strong> contains several groups that go through the whole workflow, namely <strong>Load Parameters</strong>, <strong>ROI Tool</strong>, and the <strong>Quantification</strong>. The <strong>Right Panel</strong> conatins the <strong>Figure Area</strong>, the <strong>Reference Standard Option</strong>, and the <strong>Color Scale</strong>.</p>
 <h3 id="specify-the-working-directory">Specify the working directory<a class="headerlink" href="#specify-the-working-directory" title="Permanent link"> ¶</a></h3>
-<h3 id="fill-in-the-phantom-filling-parameters">Fill in the phantom filling parameters<a class="headerlink" href="#fill-in-the-phantom-filling-parameters" title="Permanent link"> ¶</a></h3>
+<p>It is highly recommended to set the working directory before each run. To do so, use the menu <code>File</code>&gt;<code>Specify working directory</code>.</p>
+<p><a href="#refresh">Refreshing</a> the program will set the working directory back to default. The default directory is <code>%UserProfile%\Documents\MATLAB</code>.</p>
+<h3 id="specify-the-phantom-filling-parameters">Specify the phantom filling parameters<a class="headerlink" href="#specify-the-phantom-filling-parameters" title="Permanent link"> ¶</a></h3>
+<p>To specify the filling doses, filling volumes and filling times, press <code>Parameter loader</code> to start a new app window.</p>
+<p><img alt="Fill data popup" src="../img/filldata.png" /></p>
+<p>If strictly adhered to the official BCH EARL imaging protocol (to be released later) and used the official record form (to be released later), the items shall be readily at hand. Otherwise, you may need to make some compromise.</p>
+<p>Once provided all necessary data, you may press <code>Done</code> to accept the values. Or you can <code>Save</code> the data to a <code>.mat</code> binary file, to be later loaded using the <code>Load existed</code> button. This binary file can also be used in the <a href="#calculating-with-task-file">task file</a>.</p>
 <h3 id="import-the-dicom-series">Import the DICOM series<a class="headerlink" href="#import-the-dicom-series" title="Permanent link"> ¶</a></h3>
+<p>You can adjust the <code>Color scale</code> on the lower right corner of the right panel. The effect of the color scale is universal.</p>
 <h3 id="obtain-a-preliminary-roi">Obtain a preliminary ROI<a class="headerlink" href="#obtain-a-preliminary-roi" title="Permanent link"> ¶</a></h3>
 <h3 id="segment-and-calculate-the-rcs">Segment and calculate the RCs<a class="headerlink" href="#segment-and-calculate-the-rcs" title="Permanent link"> ¶</a></h3>
 <h3 id="export-the-results">Export the results<a class="headerlink" href="#export-the-results" title="Permanent link"> ¶</a></h3>
 <h2 id="gaussian-filtering">Gaussian filtering<a class="headerlink" href="#gaussian-filtering" title="Permanent link"> ¶</a></h2>
 <h2 id="calculating-with-task-file">Calculating with task file<a class="headerlink" href="#calculating-with-task-file" title="Permanent link"> ¶</a></h2>
+<h2 id="other-functions">Other functions<a class="headerlink" href="#other-functions" title="Permanent link"> ¶</a></h2>
+<h3 id="refresh">Refresh<a class="headerlink" href="#refresh" title="Permanent link"> ¶</a></h3>
+<p><code>File</code>&gt;<code>Refresh</code> will refresh the program, setting most functions and variables to the default status.</p>
+<p>The <code>Parallel</code> check box is not affected.</p>
+<div class="admonition note">
+<p class="admonition-title">Free RAMs</p>
+<p>Due to a problem with the parallel feature of MATLAB, the RAM may not be able to be freed without restarting the program. Refreshing the program will not help to release the RAM in such cases.</p>
+</div>
+<h3 id="about">About<a class="headerlink" href="#about" title="Permanent link"> ¶</a></h3>
+<p><code>Help</code>&gt;<code>About</code> prints the information about the program, including the license.</p>
+<h3 id="help">Help<a class="headerlink" href="#help" title="Permanent link"> ¶</a></h3>
+<p><code>Help</code>&gt;<code>Help</code> points to the <a href="https://mengxiangxi.info/Link/BCH_EARL.html">help page</a> for this program.</p>
               
             </div>
           </div><footer>
