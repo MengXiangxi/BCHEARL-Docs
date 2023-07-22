@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://mengxiangxi.info/BCHEARL-Docs/DemoData/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Demo Data - BCH EARL Documents</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Demo Data";
+        var mkdocs_page_input_path = "DemoData.md";
+        var mkdocs_page_url = "/BCHEARL-Docs/DemoData/";
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/yaml.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/rust.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> BCH EARL Documents
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../UserGuide/">User guide</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Demo Data</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#the-source-of-the-imaging-data">The source of the imaging data</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#the-structure-of-the-demo-data">The structure of the demo data</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#obtaining-the-demo-data">Obtaining the demo data</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">BCH EARL Documents</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
+      <li>Demo Data</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/MengXiangxi/BCHEARL-Docs/edit/main/docs/DemoData.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="demo-data">Demo Data<a class="headerlink" href="#demo-data" title="Permanent link"> ¶</a></h1>
+<p>The demo data are provided to facilitate the understanding of the workflow and providing a template for the task file. It is <strong>HIGHLY</strong> recommended that the user download them and try running the program with them.</p>
+<h2 id="the-source-of-the-imaging-data">The source of the imaging data<a class="headerlink" href="#the-source-of-the-imaging-data" title="Permanent link"> ¶</a></h2>
+<p>The DICOM files were adapted from <a href="https://zenodo.org/record/6402885">NEMA IQ phantom raw data GE 4-ring DMI</a> on <a href="https://zenodo.org/">Zenodo</a> following the <a href="https://creativecommons.org/licenses/by/4.0/legalcode">Creative Commons Attribution 4.0 International</a> license.</p>
+<blockquote>
+<p>Schramm, Georg, &amp; Baete, Kristof. (2022). NEMA IQ phantom raw data GE 4-ring DMI (1.0) [Data set]. Zenodo. https://doi.org/10.5281/zenodo.6402885</p>
+</blockquote>
+<p>The DICOM files were taken from the file <code>raw_data_1e8_prompts.zip</code>. I took the files in the <code>raw_1/duetto_workdir/offline3D</code> folder. Many thanks to my friend Zhan Tong Zhang for preparing the data.</p>
+<h2 id="the-structure-of-the-demo-data">The structure of the demo data<a class="headerlink" href="#the-structure-of-the-demo-data" title="Permanent link"> ¶</a></h2>
+<p>Upon unzipping, the demo data contain the following files.</p>
+<div class="highlight"><pre><span></span><code>D:\BCHEARL_DEMO
+│   demoFillData.mat
+│   demoROI.mat
+│   demoTask.json
+│
+└───NOT_DIAGNOSTIC_offline3D
+        _bin1_sl1.sdcopen
+        _bin1_sl10.sdcopen
+        _bin1_sl11.sdcopen
+        _bin1_sl12.sdcopen
+        ...
+</code></pre></div>
+<ul>
+<li><code>demoFillData.mat</code> is a binary data containing the <strong>filling parameters</strong> of the phantom. The data were fabricated by me. They were not the actual data in the preparation of the phantom.</li>
+<li><code>demoROI.mat</code> is a binary data for the preliminary ROI drawn over the spheres.</li>
+<li><code>demoTask.json</code> is a json task file containing two json instances. It will yield two sets of figure and tables once calculated.</li>
+<li><code>NOT_DIAGNOSTIC_offline3D</code> contains a series of DICOM images. The extension is <code>.sdcopen</code>, but the files can be loaded by a DICOM viewer.</li>
+</ul>
+<h2 id="obtaining-the-demo-data">Obtaining the demo data<a class="headerlink" href="#obtaining-the-demo-data" title="Permanent link"> ¶</a></h2>
+<p>Download the zip file <a href="https://mengxiangxi.info/Link/BCH_EARL.html">here</a>.</p>
+<p>Unzip it to <code>D:/</code>, and the new folder will be <code>D:/BCHEARL_DEMO/</code>. Of course, you can unzip it anywhere, but you may need to revise the related <code>"Work Path"</code> value in the json task file <code>demoTask.json</code>.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../UserGuide/" class="btn btn-neutral float-left" title="User guide"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/MengXiangxi/BCHEARL-Docs/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../UserGuide/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="https://unpkg.com/mermaid@8.5.0/dist/mermaid.min.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

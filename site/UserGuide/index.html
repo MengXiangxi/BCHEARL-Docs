@@ -74,6 +74,8 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#other-functions">Other functions</a>
         <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#parallel">Parallel</a>
+    </li>
     <li class="toctree-l3"><a class="reference internal" href="#refresh">Refresh</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#about">About</a>
@@ -83,6 +85,10 @@
         </ul>
     </li>
     </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../DemoData/">Demo Data</a>
                 </li>
               </ul>
       </div>
@@ -140,12 +146,21 @@
 <h2 id="gaussian-filtering">Gaussian filtering<a class="headerlink" href="#gaussian-filtering" title="Permanent link"> ¶</a></h2>
 <h2 id="calculating-with-task-file">Calculating with task file<a class="headerlink" href="#calculating-with-task-file" title="Permanent link"> ¶</a></h2>
 <h2 id="other-functions">Other functions<a class="headerlink" href="#other-functions" title="Permanent link"> ¶</a></h2>
+<h3 id="parallel">Parallel<a class="headerlink" href="#parallel" title="Permanent link"> ¶</a></h3>
+<p>The parallel computing function is provided through MATLAB. Generally, this feature may accelerate the loading and saving of multiple DICOM files. However, there are some side effects.</p>
+<div class="admonition note">
+<p class="admonition-title">Risks of parallel</p>
+<ul>
+<li>The starting of the parallel pool can be very slow.</li>
+<li>The memory management of parallel has <a href="#refresh">bugs</a>.</li>
+</ul>
+</div>
 <h3 id="refresh">Refresh<a class="headerlink" href="#refresh" title="Permanent link"> ¶</a></h3>
 <p><code>File</code>&gt;<code>Refresh</code> will refresh the program, setting most functions and variables to the default status.</p>
 <p>The <code>Parallel</code> check box is not affected.</p>
 <div class="admonition note">
 <p class="admonition-title">Free RAMs</p>
-<p>Due to a problem with the parallel feature of MATLAB, the RAM may not be able to be freed without restarting the program. Refreshing the program will not help to release the RAM in such cases.</p>
+<p>Due to a problem with the <a href="#parallel">parallel</a> feature of MATLAB, the RAM may not be able to be freed without restarting the program. Refreshing the program will not help to release the RAM in such cases.</p>
 </div>
 <h3 id="about">About<a class="headerlink" href="#about" title="Permanent link"> ¶</a></h3>
 <p><code>Help</code>&gt;<code>About</code> prints the information about the program, including the license.</p>
@@ -156,6 +171,7 @@
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href=".." class="btn btn-neutral float-left" title="About"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../DemoData/" class="btn btn-neutral float-right" title="Demo Data">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -184,6 +200,8 @@
     
       <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
     
+    
+      <span><a href="../DemoData/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
