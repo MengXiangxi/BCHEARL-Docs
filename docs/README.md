@@ -27,7 +27,7 @@ I hope you enjoy the project and the tool.
 
 ## License
 
-For now, I am reserving all rights. But I do have a plan to release it as an open source software. However, I also retains the rights of commercialization.
+For now, I am reserving all rights. But I do have a plan to release it as an open source software. However, I also retain the rights of commercialization.
 
 ## Cite
 
