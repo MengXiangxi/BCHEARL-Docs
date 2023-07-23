@@ -124,7 +124,7 @@ The blue line indicates $\mathrm{RC_{mean}}$; the orange line indicates $\mathrm
 
     $$
     \require{boldsymbol}
-    \newcommand{\oiiint}{{\subset\!\supset}\llap{\iiint}}
+    \newcommand{\oiiint}{{\subset \! \supset} \llap{\iiint}}
     \begin{eqnarray}\\
     \overrightarrow{\theta^\max_i} &=& \underset{\overrightarrow{\theta}}{\operatorname{arg max }} M_{\Omega_i}(\boldsymbol{I})\\
     \Omega_i^P(\overrightarrow{\theta}) &:=& \{||\overrightarrow{\theta}-\overrightarrow{\theta^\max_i}||<r\}, r=6.2\textrm{ mm} \\
