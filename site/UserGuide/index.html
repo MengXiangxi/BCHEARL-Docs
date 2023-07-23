@@ -71,6 +71,10 @@
     <li class="toctree-l2"><a class="reference internal" href="#gaussian-filtering">Gaussian filtering</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#calculating-with-task-file">Calculating with task file</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#the-json-task-file-template-explained">The json task file template explained</a>
+    </li>
+        </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#other-functions">Other functions</a>
         <ul>
@@ -131,20 +135,147 @@
 <p><img alt="GUI on start" src="../img/gui1.png" /></p>
 <p>The <strong>Menu</strong> is on the top. Below it are two panels. The <strong>Left Panel</strong> contains several groups that go through the whole workflow, namely <strong>Load Parameters</strong>, <strong>ROI Tool</strong>, and the <strong>Quantification</strong>. The <strong>Right Panel</strong> conatins the <strong>Figure Area</strong>, the <strong>Reference Standard Option</strong>, and the <strong>Color Scale</strong>.</p>
 <h3 id="specify-the-working-directory">Specify the working directory<a class="headerlink" href="#specify-the-working-directory" title="Permanent link"> ¶</a></h3>
-<p>It is highly recommended to set the working directory before each run. To do so, use the menu <code>File</code>&gt;<code>Specify working directory</code>.</p>
-<p><a href="#refresh">Refreshing</a> the program will set the working directory back to default. The default directory is <code>%UserProfile%\Documents\MATLAB</code>.</p>
+<p>It is highly recommended to set the working directory before each run. To do so, use the menu <code>File</code>&gt;<code>Specify working directory</code>. The default directory when the program is started is <code>%UserProfile%\Documents\MATLAB</code>.</p>
 <h3 id="specify-the-phantom-filling-parameters">Specify the phantom filling parameters<a class="headerlink" href="#specify-the-phantom-filling-parameters" title="Permanent link"> ¶</a></h3>
-<p>To specify the filling doses, filling volumes and filling times, press <code>Parameter loader</code> to start a new app window.</p>
+<p>To specify the filling doses, filling volumes, and filling times, press <code>Parameter loader</code> to start a new app window.</p>
 <p><img alt="Fill data popup" src="../img/filldata.png" /></p>
 <p>If strictly adhered to the official BCH EARL imaging protocol (to be released later) and used the official record form (to be released later), the items shall be readily at hand. Otherwise, you may need to make some compromise.</p>
 <p>Once provided all necessary data, you may press <code>Done</code> to accept the values. Or you can <code>Save</code> the data to a <code>.mat</code> binary file, to be later loaded using the <code>Load existed</code> button. This binary file can also be used in the <a href="#calculating-with-task-file">task file</a>.</p>
 <h3 id="import-the-dicom-series">Import the DICOM series<a class="headerlink" href="#import-the-dicom-series" title="Permanent link"> ¶</a></h3>
-<p>You can adjust the <code>Color scale</code> on the lower right corner of the right panel. The effect of the color scale is universal.</p>
+<p>Next, the DICOM series of the PET image of the phantom is imported. First click on the <code>DICOM import</code> button, and choose <em>any one DICOM file</em> in the folder. Then, the whole series will be loaded. The center coronal slice will be visualized at the <strong>Figure Area</strong>.</p>
+<p><img alt="DICOM series loaded" src="../img/DICOMloaded.png" /></p>
+<p>The <code>Parallel</code> checkbox is enabled by default, which means the loading process is using the <a href="#parallel">parallel feature</a>. You may uncheck it when necessary.</p>
+<p>You can adjust the <code>Color scale</code> on the lower right corner of the right panel. The effect of the color scale is global.</p>
+<div class="admonition note">
+<p class="admonition-title">Color scale<a name="colorscale"></a></p>
+<p>The <code>Color scale</code> is in an arbitrary unit and affects the visualization of most of the color map images in this program.</p>
+</div>
 <h3 id="obtain-a-preliminary-roi">Obtain a preliminary ROI<a class="headerlink" href="#obtain-a-preliminary-roi" title="Permanent link"> ¶</a></h3>
+<div class="admonition tip">
+<p class="admonition-title">Concept of the preliminary ROI</p>
+<p>Although it is not very hard to implement an fully-automatic sphere-locating algorithm, I still chose to use the semi-automatic way for stability and to raise alert. The <strong>preliminary ROI</strong> is drawn over the <em>central slice</em> and is used as the <em>initial range</em> in the final (adaptive 50% isocontour) VOI segmentation.</p>
+<p>In this program, I use <strong>(preliminary) ROI</strong> to denote the 2D circles defined by the users, and use <strong>VOI</strong> to denote the automatically segmented 3D spheres.</p>
+<p>Thus, it is recommended to drag the radius of the ROI to be <em>slightly larger</em> than the radius of the corresponding sphere.</p>
+</div>
+<p>To draw a new preliminary ROI, press <code>Draw/modify ROI</code> button. This button is only enabled when both the phantom dose parameters and the DICOM series are properly loaded. A new window will pop up, and you can adjust the ROIs with mouse.</p>
+<p><img alt="Drawing ROIs" src="../img/DrawingROIs.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Interacting with the 3D slice viewer<a name="viewer3D"></a></p>
+<p>A <strong>3D slice viewer</strong> is a MATLAB <a href="https://www.mathworks.com/help/matlab/ref/figure.html">figure window</a> to visualize 3D images. The basic functions are:</p>
+<ul>
+<li><strong>Mouse scrolling</strong>: scroll through consecutive layers of the image.</li>
+<li><code>Save as</code>/<code>Copy as Image</code>/<code>Copy as Vector Graphic</code>: MATLAB figure window function.</li>
+<li><code>Pan</code>: MATLAB figure window function.</li>
+<li><code>Zoom In</code>: MATLAB figure window function.</li>
+<li><code>Zomm Out</code>: MATLAB figure window function.</li>
+<li><code>Restore View</code>: MATLAB figure window function.</li>
+</ul>
+</div>
+<p>The axial slices of the DICOM series are presented in this <strong>3D slice viewer</strong> window. ROIs corresponding to the six spheres (10 mm, 13 mm, 17 mm, 22 mm, 28 mm, and 37 mm diameter) will appear. First scroll the mouse to locate the slice at the center of the spheres, and drag the ROIs with mouse to the corresponding spheres. You can adjust the radius of each ROI circle by dragging the perimeter when the ROI is activated. You can take the advantage of the <code>Zoom In</code> function. You can also adjust the <a href="#colorscale"><strong>Color scale</strong></a>.</p>
+<p>When the ROI is readily adjusted, you can close the window. A dialog will ask you to confirm the ROI selection. Both the slice and the ROIs will be recorded.</p>
+<p>Then, press the <code>Confirm ROI</code> button. The slice on which the ROIs were drawn will be shown in the <strong>Figure Area</strong>. Meanwhile the concentration ratio between the spheres and the background body is shown on the interface.</p>
+<p><img alt="ROIs confirmed" src="../img/ROIsConfirmed.png" /></p>
+<p>You are advised to always save the manually defined <strong>preliminary ROIs</strong> and the corresponding slice number to a binary file with <code>Save ROI</code> button. You can later reload it with <code>Load existing ROI</code> button.</p>
 <h3 id="segment-and-calculate-the-rcs">Segment and calculate the RCs<a class="headerlink" href="#segment-and-calculate-the-rcs" title="Permanent link"> ¶</a></h3>
+<p>Once the ROIs have been confirmed, the <code>Segmentation</code> button is enabled. Press the button and the spheres will be segmented. Currently, only the 50% threshold segmentation via the region growth algorithm (holes filled) is supported, using the highest value point in the ROI as the seed. The threshold for the <span class="arithmatex">\(i\)</span>-th VOI is <span class="arithmatex">\(T_i\)</span> is defined by the following equations.</p>
+<div class="arithmatex">\[\require{boldsymbol}
+\begin{eqnarray}
+\Omega_i &amp;:=&amp; \textrm{The sphere mask defined by the i-th preliminary ROI}   \\
+M_\Omega(\theta) &amp;=&amp; 1 (\theta \in \Omega); 0 (\theta \notin \Omega)\\
+T_i &amp;=&amp; C_{background}+50\%\times\left(\max{\{M_{\Omega_i}(\boldsymbol{I})\cdot \boldsymbol{I}\}-C_{background}}\right)
+\end{eqnarray}\]</div>
+<p>where <span class="arithmatex">\(C_{background}\)</span> is the background concentration at the reference time point (Bq/mL), and <span class="arithmatex">\(\boldsymbol{I}\)</span> is the concentration derived from the image at the same reference time point (Bq/mL). <span class="arithmatex">\(\boldsymbol{I}\)</span> is voxelized.</p>
+<div class="admonition note">
+<p class="admonition-title">Segmentation failure</p>
+<p>If the contrast of the sphere is too low, the segmentation may fail. Please <a href="#refresh">refresh</a> the program and try another image.</p>
+</div>
+<p>After completion, the segmented spheres will be shown in the <strong>Figure Area</strong>.</p>
+<p><img alt="Segmentation completed" src="../img/Segmented.png" /></p>
+<p>If the <code>Show segmented 3D mask</code> checkbox is selected, a <a href="#viewer3D"><strong>3D slice viewer</strong></a> will show the segmented mask. Users can check if the segmented regions are as expected.</p>
+<p><img alt="Segmentation 3D mask" src="../img/SegmentationMask.png" /></p>
+<p>Then, press <code>Calculate</code>. The recovery coefficients (RCs) will be calculated, including <span class="arithmatex">\(\mathrm{RC_{mean}}\)</span>, <span class="arithmatex">\(\mathrm{RC_{max}}\)</span>, and <span class="arithmatex">\(\mathrm{RC_{peak}}\)</span>. A plot will be updated in the <strong>Figure Area</strong>, with the specified <code>Reference standard</code>.</p>
+<p><img alt="RC plot" src="../img/Calculated.png" /></p>
+<p>The blue line indicates <span class="arithmatex">\(\mathrm{RC_{mean}}\)</span>; the orange line indicates <span class="arithmatex">\(\mathrm{RC_{max}}\)</span>; and the purple line <span class="arithmatex">\(\mathrm{RC_{peak}}\)</span>. An upward triangle means the point is over the higher limit of the reference standard, while a downward triangle means the opposite.</p>
+<div class="admonition note">
+<p class="admonition-title"><span class="arithmatex">\(\mathrm{RC_{peak}}\)</span></p>
+<p>There are difference definitions of <span class="arithmatex">\(\mathrm{SUV_{peak}}\)</span>, thus the <span class="arithmatex">\(\mathrm{RC_{peak}}\)</span> is also ambiguous.</p>
+<div class="arithmatex">\[
+\require{boldsymbol}
+\newcommand{\oiiint}{{\subset\!\supset} \llap{\iiint}}
+\begin{eqnarray}\\
+\overrightarrow{\theta^\max_i} &amp;=&amp; \underset{\overrightarrow{\theta}}{\operatorname{arg max }} M_{\Omega_i}(\boldsymbol{I})\\
+\Omega_i^P(\overrightarrow{\theta}) &amp;:=&amp; \{||\overrightarrow{\theta}-\overrightarrow{\theta^\max_i}||&lt;r\}, r=6.2\textrm{ mm} \\
+\mathrm{RC}_{\mathrm{peak}, i}  &amp;=&amp; \frac{\oiiint \Omega^P_i(\overrightarrow{\theta})\mathrm{d}\overrightarrow{\theta}}{C_{\mathrm{sphere}}}
+\end{eqnarray}\]</div>
+<p>Explanation: <span class="arithmatex">\(\overrightarrow{\theta^\max_i}\)</span> is the vector corresponding to the maximum point of in spherical VOI <span class="arithmatex">\(\Omega_i\)</span>. <span class="arithmatex">\(\Omega_i^P(\overrightarrow{\theta})\)</span> is the spherical VOI whose volume is 1 cm<sup>3</sup>. <span class="arithmatex">\(C_{\mathrm{sphere}}\)</span> is the concentration of radionuclide in the spheres (Bq/mL).</p>
+<p>There is a problem with this algorithm. If the image is severely influenced by the Gibbs effect and <span class="arithmatex">\(\overrightarrow{\theta^\max_i}\)</span> is located close to the surface of the sphere, then the volume <span class="arithmatex">\(\Omega_i^P(\overrightarrow{\theta})\)</span> would contain a significant portion of the background, resulting in the abnormally lower <span class="arithmatex">\(\mathrm{RC_{peak}}\)</span>.</p>
+</div>
 <h3 id="export-the-results">Export the results<a class="headerlink" href="#export-the-results" title="Permanent link"> ¶</a></h3>
+<p>Now, the plot and the values are ready to be exported. Press <code>Save figure</code> to export the plot. Press <code>Save value</code> to export the data to an ASCII file.</p>
 <h2 id="gaussian-filtering">Gaussian filtering<a class="headerlink" href="#gaussian-filtering" title="Permanent link"> ¶</a></h2>
+<p>You can apply the Gaussian filter and save the filtered image using the Gaussian filter function, with <code>File</code>&gt;<code>Gaussian Filter</code>.</p>
+<p><img alt="Gaussian Filter" src="../img/Gaussian1.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Reconstruct unfiltered images</p>
+<p>I recommend the users to reconstruct unfiltered images, and apply Gaussian filtering with <em>BCH EARL</em>.</p>
+<p>Due to differences in implementation, the filtered images generated by <em>BCH EARL</em> and applied in the postprocessing step of image reconstruction are not bit-by-bit equivalent. However the developer has tested some cases, they are &ldquo;close enough&rdquo;.</p>
+</div>
+<p>First, load the original DICOM file using <code>Load DICOM</code> button. The axial slice will be shown. To use the <a href="#parallel">parallel</a> function, enable the <code>Parallel</code> checkbox.</p>
+<p><img alt="Gaussian DICOM loaded" src="../img/Gaussian2.png" /></p>
+<p>Then, you can specify the FWHM of the Gaussian filter. You can also specify the filter size (kernel size). Select the <code>auto</code> checkbox, and the kernel size <span class="arithmatex">\(k\)</span> will be calculated using the following equation.</p>
+<div class="arithmatex">\[
+k = 2\times\operatorname{ceil}(3\times\frac{\mathrm{FWHM}}{\sqrt{8\times\log 2}})+1
+\]</div>
+<p><img alt="Gaussian filter applied" src="../img/Gaussian3.png" /></p>
+<p>The filtered image should be saved to a new series. Use the <code>Save DICOM</code> button. This button will generate a new folder in the same level as the original DICOM folder, but this new series will have a new series number. You can also specify the folder name.  To use the <a href="#parallel">parallel</a> function, enable the <code>Parallel</code> checkbox.</p>
 <h2 id="calculating-with-task-file">Calculating with task file<a class="headerlink" href="#calculating-with-task-file" title="Permanent link"> ¶</a></h2>
+<p>Once you have performed the analysis using the GUI with your new dataset, you can then perform batch jobs using a json task file.</p>
+<p>To do this, you need to first edit the task file using your favorite text editor, save it with the extension of <code>.json</code>, and select this file through <code>File</code>&gt;<code>Load task file</code>. Then, plots and values will be generated and exported automatically.</p>
+<p>The whole process is illustrated in the following chart.</p>
+<p><img alt="The flowchart" src="../img/FlowChart.png" /></p>
+<h3 id="the-json-task-file-template-explained">The json task file template explained<a class="headerlink" href="#the-json-task-file-template-explained" title="Permanent link"> ¶</a></h3>
+<p>The task file must have the extension of <code>.json</code> and must follow the <a href="https://www.json.org/">JSON</a> convention.</p>
+<div class="admonition note">
+<p class="admonition-title">Validation of the JSON file</p>
+<p>It is important to ensure the format validity of the JSON task file. You may use a JSON formatter to check it. You can find many related tools on the internet.</p>
+</div>
+<p>A demonstrative task file can be found in the <a href="../DemoData/">demo data</a>. And below is a simplified version.</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;Demo&quot;</span><span class="p">:[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;Work Path&quot;</span><span class="p">:</span><span class="s2">&quot;D://BCHEARL_Demo&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;isParallel&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;Data Dir&quot;</span><span class="p">:</span><span class="s2">&quot;NOT_DIAGNOSTIC_offline3D&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;Fill Data&quot;</span><span class="p">:</span><span class="s2">&quot;./demoFillData.mat&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;Mask File&quot;</span><span class="p">:</span><span class="s2">&quot;./demoROI.mat&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;Mask Layer&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;Gaussian&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;Ref Standard&quot;</span><span class="p">:</span><span class="s2">&quot;EARL2&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;Figure Path&quot;</span><span class="p">:</span><span class="s2">&quot;./&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;Result Path&quot;</span><span class="p">:</span><span class="s2">&quot;./&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Explanation:</p>
+<ul>
+<li>The <strong>instance name</strong> here is <code>"Demo"</code>.</li>
+<li>All fields are compulsory in all instances. Do not omit any of them.</li>
+<li><code>"Work Path"</code> is the <a href="#specify-the-working-directory">working directory</a>. It should be an absolute path for clarity.</li>
+<li><code>"isParalllel"</code> specifies if the <a href="#parallel">parallel</a> function is used.</li>
+<li><code>Data Dir"</code> is the path to the DICOM series data to be analyzed. It can be either a relative or an absolute path, but it has to be the folder.</li>
+<li><code>"Fill Data"</code> is the path to the binary file for the phantom parameters <a href="#specify-the-phantom-filling-parameters">previously generated</a>. It can be either a relative or an absolute path.</li>
+<li><code>"Mask File"</code> is the path to the binary file for the <strong>preliminary ROIs</strong> <a href="#obtain-a-preliminary-roi">previously generated</a>. It can be either a relative or an absolute path.</li>
+<li><code>"Mask Layer"</code> is the layer of the center slice. Use <code>0</code> for the automatically determined layer (valid in most cases), or an integer for a self-defined value.</li>
+<li><code>"Gaussian"</code> is the FWHM of the Gaussian filter in mm. If the value is <code>0</code>, the filtering step is omitted.</li>
+<li><code>"Ref Standard</code> is the reference standard on the RC plots. It can be either <code>"EARL1"</code> or <code>"EARL2"</code>, and other strings will result in no reference standard.</li>
+<li><code>"Figure Path"</code> is the path to the image file to be exported. It can be either a relative or an absolute path. If the path is a folder, the <strong>instance name</strong> is used as the file name, and <code>.png</code>  is used as the extension name. If the string is void, no image file will be exported. You will receive a warning if neither the image nor the value is exported.</li>
+<li><code>"Result Path"</code> is the path to the ASCII file to be exported. It can be either a relative or an absolute path. If the path is a folder, the <strong>instance name</strong> is used as the file name, and <code>.csv</code> is used as the extension name. If the string is void, no image file will be exported. You will receive a warning if neither the image nor the value is exported.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Windows path convention</p>
+<p>Use <code>/</code> or <code>\\</code> as the path separator. Do not use the system default <code>\</code>, because it is an escape character.</p>
+</div>
 <h2 id="other-functions">Other functions<a class="headerlink" href="#other-functions" title="Permanent link"> ¶</a></h2>
 <h3 id="parallel">Parallel<a class="headerlink" href="#parallel" title="Permanent link"> ¶</a></h3>
 <p>The parallel computing function is provided through MATLAB. Generally, this feature may accelerate the loading and saving of multiple DICOM files. However, there are some side effects.</p>
@@ -157,7 +288,7 @@
 </div>
 <h3 id="refresh">Refresh<a class="headerlink" href="#refresh" title="Permanent link"> ¶</a></h3>
 <p><code>File</code>&gt;<code>Refresh</code> will refresh the program, setting most functions and variables to the default status.</p>
-<p>The <code>Parallel</code> check box is not affected.</p>
+<p>The <code>Parallel</code> check box is not affected. The working directory is not affected either.</p>
 <div class="admonition note">
 <p class="admonition-title">Free RAMs</p>
 <p>Due to a problem with the <a href="#parallel">parallel</a> feature of MATLAB, the RAM may not be able to be freed without restarting the program. Refreshing the program will not help to release the RAM in such cases.</p>
@@ -209,6 +340,8 @@
     <script src="../js/theme_extra.js" defer></script>
     <script src="../js/theme.js" defer></script>
       <script src="https://unpkg.com/mermaid@8.5.0/dist/mermaid.min.js" defer></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
       <script src="../search/main.js" defer></script>
     <script defer>
         window.onload = function () {

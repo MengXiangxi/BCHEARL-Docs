@@ -9,23 +9,6 @@ theme:
   hljs_languages:
       - yaml
       - rust
-  features:
-    - navigation.tabs
-  palette:
-    - media: "(prefers-color-scheme: light)"
-      scheme: default
-      primary: blue 
-      accent: amber
-      toggle:
-        icon: material/toggle-switch-off-outline
-        name: Switch to dark mode
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
-      primary: blue
-      accent: amber
-      toggle:
-        icon: material/toggle-switch
-        name: Switch to light mode
 
 extra:
   analytics:
@@ -38,6 +21,8 @@ plugins:
 
 extra_javascript:
   - https://unpkg.com/mermaid@8.5.0/dist/mermaid.min.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 extra_css:
   - https://use.fontawesome.com/releases/v5.13.0/css/all.css
@@ -62,3 +47,5 @@ markdown_extensions:
       permalink: " ¶"
   - smarty
   - fontawesome_markdown
+  - pymdownx.arithmatex:
+        generic: true
