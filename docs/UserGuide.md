@@ -126,7 +126,7 @@ The blue line indicates $\mathrm{RC_{mean}}$; the orange line indicates $\mathrm
     \require{boldsymbol}
     \newcommand{\oiiint}{ {\subset \! \supset} \llap{\iiint} }
     \begin{eqnarray}\\
-    \overrightarrow{\theta^\max_i} &=& \underset{\overrightarrow{\theta}}{\operatorname{arg max }} M_{\Omega_i}(\boldsymbol{I})\\
+    \overrightarrow{\theta^\max_i} &=& \underset{\overrightarrow{\theta}}{\operatorname{arg max }} \{M_{\Omega_i}(\boldsymbol{I})\cdot \boldsymbol{I}\}\\
     \Omega_i^P(\overrightarrow{\theta}) &:=& \{||\overrightarrow{\theta}-\overrightarrow{\theta^\max_i}||<r\}, r=6.2\textrm{ mm} \\
     \mathrm{RC}_{\mathrm{peak}, i}  &=& \frac{\oiiint \Omega^P_i(\overrightarrow{\theta})\mathrm{d}\overrightarrow{\theta}}{C_{\mathrm{sphere}}}
     \end{eqnarray}$$

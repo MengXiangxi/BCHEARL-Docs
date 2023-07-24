@@ -133,7 +133,7 @@
 <h2 id="calculating-with-gui">Calculating with GUI<a class="headerlink" href="#calculating-with-gui" title="Permanent link"> ¶</a></h2>
 <p>Upon successful installation, you can see run the application.</p>
 <p><img alt="GUI on start" src="../img/gui1.png" /></p>
-<p>The <strong>Menu</strong> is on the top. Below it are two panels. The <strong>Left Panel</strong> contains several groups that go through the whole workflow, namely <strong>Load Parameters</strong>, <strong>ROI Tool</strong>, and the <strong>Quantification</strong>. The <strong>Right Panel</strong> conatins the <strong>Figure Area</strong>, the <strong>Reference Standard Option</strong>, and the <strong>Color Scale</strong>.</p>
+<p>The <strong>Menu</strong> is on the top. Below it are two panels. The <strong>Left Panel</strong> contains several groups that go through the whole workflow, namely <strong>Load Parameters</strong>, <strong>ROI Tool</strong>, and the <strong>Quantification</strong>. The <strong>Right Panel</strong> contains the <strong>Figure Area</strong>, the <strong>Reference Standard Option</strong>, and the <strong>Color Scale</strong>.</p>
 <h3 id="specify-the-working-directory">Specify the working directory<a class="headerlink" href="#specify-the-working-directory" title="Permanent link"> ¶</a></h3>
 <p>It is highly recommended to set the working directory before each run. To do so, use the menu <code>File</code>&gt;<code>Specify working directory</code>. The default directory when the program is started is <code>%UserProfile%\Documents\MATLAB</code>.</p>
 <h3 id="specify-the-phantom-filling-parameters">Specify the phantom filling parameters<a class="headerlink" href="#specify-the-phantom-filling-parameters" title="Permanent link"> ¶</a></h3>
@@ -153,7 +153,7 @@
 <h3 id="obtain-a-preliminary-roi">Obtain a preliminary ROI<a class="headerlink" href="#obtain-a-preliminary-roi" title="Permanent link"> ¶</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">Concept of the preliminary ROI</p>
-<p>Although it is not very hard to implement an fully-automatic sphere-locating algorithm, I still chose to use the semi-automatic way for stability and to raise alert. The <strong>preliminary ROI</strong> is drawn over the <em>central slice</em> and is used as the <em>initial range</em> in the final (adaptive 50% isocontour) VOI segmentation.</p>
+<p>Although it is not very hard to implement a fully-automatic sphere-locating algorithm, I still chose to use the semi-automatic way for stability and to raise alert. The <strong>preliminary ROI</strong> is drawn over the <em>central slice</em> and is used as the <em>initial range</em> in the final (adaptive 50% isocontour) VOI segmentation.</p>
 <p>In this program, I use <strong>(preliminary) ROI</strong> to denote the 2D circles defined by the users, and use <strong>VOI</strong> to denote the automatically segmented 3D spheres.</p>
 <p>Thus, it is recommended to drag the radius of the ROI to be <em>slightly larger</em> than the radius of the corresponding sphere.</p>
 </div>
@@ -167,7 +167,7 @@
 <li><code>Save as</code>/<code>Copy as Image</code>/<code>Copy as Vector Graphic</code>: MATLAB figure window function.</li>
 <li><code>Pan</code>: MATLAB figure window function.</li>
 <li><code>Zoom In</code>: MATLAB figure window function.</li>
-<li><code>Zomm Out</code>: MATLAB figure window function.</li>
+<li><code>Zoom Out</code>: MATLAB figure window function.</li>
 <li><code>Restore View</code>: MATLAB figure window function.</li>
 </ul>
 </div>
@@ -201,9 +201,9 @@ T_i &amp;=&amp; C_{background}+50\%\times\left(\max{\{M_{\Omega_i}(\boldsymbol{I
 <p>There are difference definitions of <span class="arithmatex">\(\mathrm{SUV_{peak}}\)</span>, thus the <span class="arithmatex">\(\mathrm{RC_{peak}}\)</span> is also ambiguous.</p>
 <div class="arithmatex">\[
 \require{boldsymbol}
-\newcommand{\oiiint}{{\subset\!\supset} \llap{\iiint}}
+\newcommand{\oiiint}{ {\subset \! \supset} \llap{\iiint} }
 \begin{eqnarray}\\
-\overrightarrow{\theta^\max_i} &amp;=&amp; \underset{\overrightarrow{\theta}}{\operatorname{arg max }} M_{\Omega_i}(\boldsymbol{I})\\
+\overrightarrow{\theta^\max_i} &amp;=&amp; \underset{\overrightarrow{\theta}}{\operatorname{arg max }} \{M_{\Omega_i}(\boldsymbol{I})\cdot \boldsymbol{I}\}\\
 \Omega_i^P(\overrightarrow{\theta}) &amp;:=&amp; \{||\overrightarrow{\theta}-\overrightarrow{\theta^\max_i}||&lt;r\}, r=6.2\textrm{ mm} \\
 \mathrm{RC}_{\mathrm{peak}, i}  &amp;=&amp; \frac{\oiiint \Omega^P_i(\overrightarrow{\theta})\mathrm{d}\overrightarrow{\theta}}{C_{\mathrm{sphere}}}
 \end{eqnarray}\]</div>
@@ -218,7 +218,7 @@ T_i &amp;=&amp; C_{background}+50\%\times\left(\max{\{M_{\Omega_i}(\boldsymbol{I
 <div class="admonition note">
 <p class="admonition-title">Reconstruct unfiltered images</p>
 <p>I recommend the users to reconstruct unfiltered images, and apply Gaussian filtering with <em>BCH EARL</em>.</p>
-<p>Due to differences in implementation, the filtered images generated by <em>BCH EARL</em> and applied in the postprocessing step of image reconstruction are not bit-by-bit equivalent. However the developer has tested some cases, they are &ldquo;close enough&rdquo;.</p>
+<p>Due to differences in implementation, the filtered images generated by <em>BCH EARL</em> and applied in the postprocessing step of image reconstruction are not bit-by-bit equivalent. However, the developer has tested some cases, they are &ldquo;close enough&rdquo;.</p>
 </div>
 <p>First, load the original DICOM file using <code>Load DICOM</code> button. The axial slice will be shown. To use the <a href="#parallel">parallel</a> function, enable the <code>Parallel</code> checkbox.</p>
 <p><img alt="Gaussian DICOM loaded" src="../img/Gaussian2.png" /></p>
